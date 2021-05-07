@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Exo 4</title>
+        <style type="text/css">
+                canvas { border: 1px solid black;}
+                img {display: none;}
+        </style>
+    </head>
+    <body onload="draw();">
+        <canvas id="idcanvas" width="265" height="150"></canvas>
+        <img src="rhino.jpg" id="rhino">
+        <script type="text/javascript">
+            var ctx = document.getElementById('idcanvas').getContext('2d');
+            var img = new Image();
+            img.src = 'div.png';
+            img.onload = function() {
+                var x0=0;y0=0;
+                ctx.drawImage(img,x0,y0);
+                var image = document.getElementById("rhino");
+                //40 80
+                ctx.drawImage(image,40,80,87,104,20,21,87,104);
+                x0=+img.naturalWidth;
+                ctx.drawImage(img,x0,y0);
+                // w121 h139 x4 y3
+                ctx.drawImage(img,5,3,121,139,x0+20,21,87,104); 
+                ctx.drawImage(image,40,80,87,104,x0+32,34,66,79);
+            }
+        </script>
+    </body>
+</html>

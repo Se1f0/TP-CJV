@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Exo 1</title>
+        <style type="text/css">
+                canvas { border: 1px solid black; }
+        </style>
+    </head>
+    <body onload="draw();">
+        <canvas id="idcanvas" width="950" height="750"></canvas>
+        <script type="text/javascript">          
+            function draw() {
+                var ctx = document.getElementById('idcanvas').getContext('2d');
+                var img1 = new Image();
+                img1.src = 'motif1.png';
+
+                var img2 = new Image();
+                img2.src = 'motif2.png';
+
+                img1.onload = function(){
+                    var x0=0;y0=0;
+                    for(let i=0;i<4;i++){
+                        ctx.drawImage(img1,x0,y0);
+                        x0+=img1.naturalWidth;
+                    }
+                }
+                img2.onload = function(){
+                    var x0;y0=430;
+                    for(let i=0;i<3;i++){
+                        x0=290;
+                        for(let j=0;j<3;j++){
+                           ctx.drawImage(img2,x0,y0);    
+                           x0+=img2.naturalWidth; 
+                        }
+                        y0+=img2.naturalHeight;
+                    }
+                }
+            }         
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Exo 2</title>
+        <style type="text/css">
+                canvas { border: 1px solid black; background-color: brown; }
+                img {display: none;}
+        </style>
+    </head>
+    <body onload="draw();" id="body">
+        <canvas id="idcanvas" width="700" height="300"></canvas>
+        <!-- <img src="gallery_1.jpg" id="gallery_1" style="display: none;">
+        <img src="gallery_2.jpg" id="gallery_2" style="display: none;">
+        <img src="gallery_3.jpg" id="gallery_3" style="display: none;">
+        <img src="gallery_4.jpg" id="gallery_4" style="display: none;">
+        <img src="gallery_5.jpg" id="gallery_5" style="display: none;">
+        <img src="gallery_6.jpg" id="gallery_6" style="display: none;">
+        <img src="gallery_7.jpg" id="gallery_7" style="display: none;">
+        <img src="gallery_8.jpg" id="gallery_8" style="display: none;"> -->
+        <script type="text/javascript">
+            for(let i=1;i<=8;i++){
+                var tag = document.createElement("img");
+                tag.setAttribute("src","gallery_"+i+".jpg");
+                tag.setAttribute("id","gallery_"+i);
+                var body = document.getElementById("body");
+                body.appendChild(tag);
+            }
+            function draw() {
+                var ctx = document.getElementById('idcanvas').getContext('2d');
+                var image;
+                var x0,y0=20;
+                var k=0;
+                for(let i=1;i<=2;i++){
+                    x0=50;
+                    for(let j=1;j<=4;j++){
+                        image = document.getElementById('gallery_'+(j+k));
+                        ctx.drawImage(image,x0,y0);
+                        x0+=165;
+                    }
+                    k=4;
+                    y0+=150;
+                }
+            }
+        </script>
+    </body>
+</html>

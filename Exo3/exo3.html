@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Exo 3</title>
+        <style type="text/css">
+                canvas { border: 1px solid black;}
+        </style>
+    </head>
+    <body onload="draw();">
+        <canvas id="idcanvas" width="805" height="560"></canvas>
+        <script type="text/javascript">
+            var ctx = document.getElementById('idcanvas').getContext('2d');
+            var img = new Image();
+            img.src = 'pattern.png';
+
+            img.onload = function(){
+                var x0;y0=0;
+                for(let i=0;i<6;i++){
+                    x0=0;
+                    for(let j=0;j<12;j++){
+                       ctx.drawImage(img,x0,y0);    
+                       x0+=img.naturalWidth; 
+                    }
+                    y0+=img.naturalHeight;
+                }
+            }
+        </script>
+    </body>
+</html>
