@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Couleur dans Canvas</title>
+
+        <style type="text/css">
+                canvas { border: 1px solid black; }
+        </style>
+    </head>
+    <body onload="draw();">
+        <canvas id="idcanvas" width="800" height="500"></canvas>
+        <script type="text/javascript">
+            function drawTransparent(x,y,ax,bx,r,g,b){
+                var ctx = document.getElementById('idcanvas').getContext('2d');  
+                for(i=0;i<10;i++){                     
+                    ctx.fillStyle = 'rgba('+r+','+g+','+b+','+ (1-i*0.1)+')';
+                    ctx.fillRect (x+i*ax,y,ax,bx);      
+                }
+            }           
+            function draw() {
+                var ctx = document.getElementById('idcanvas').getContext('2d');
+                var x0=50,y0=100,r=20,a=50,b=50,x,y;    
+                for(let i=0;i<6;i++){
+                    for(let j=0;j<6;j++){
+                        x=x0+a*j;
+                        y=y0+b*i;
+                        ctx.strokeStyle = 'rgb(0,200,0)';
+                        ctx.lineWidth=4;
+                        ctx.fillStyle = 'rgb('+(255-i*40)+','+(255-j*40)+',0)';
+                        ctx.fillRect (x,y,a,b);        
+                        ctx.beginPath();
+                        ctx.arc(x+a/2,y+b/2,r,0,Math.PI*2,true);
+                        ctx.stroke();
+                        ctx.fill();        
+                    }
+                }
+                x=x0+6*a+100;
+                y=y0+30;
+                ctx.lineWidth=10;
+                a=310;b=50;
+                
+                ctx.strokeStyle = 'rgb(230,230,0)';
+                ctx.strokeRect(x,y,a,b);
+                drawTransparent(x+5,y+5,30,b-10,200,200,0);
+                y=y+b+10;
+                
+                ctx.strokeStyle = 'rgb(0,230,0)';
+                ctx.strokeRect(x,y,a,b);
+                drawTransparent(x+5,y+5,30,b-10,0,200,0);
+                y=y+b+10;
+                
+                ctx.strokeStyle = 'rgb(0,0,230)';
+                ctx.strokeRect(x,y,a,b);
+                drawTransparent(x+5,y+5,30,b-10,0,0,200);
+                y=y+b+10;
+                
+                ctx.strokeStyle = 'rgb(230,0,0)';
+                ctx.strokeRect(x,y,a,b);
+                drawTransparent(x+5,y+5,30,b-10,200,0,0);
+            }         
+        </script>
+    </body>
+</html>
