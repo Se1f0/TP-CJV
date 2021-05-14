@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Exo 1</title>
+        <style type="text/css">
+                canvas { border: 1px solid black; }
+        </style>
+    </head>
+    <body onload="draw();">
+        <canvas id="idcanvas" width="600" height="198"></canvas>
+        <script type="text/javascript">          
+            var ctx = document.getElementById('idcanvas').getContext('2d');
+            var pos = -1;
+            var w = 1024;
+            var img = new Image();
+            function draw() {
+                pos = pos + 1;
+                if (pos == w) {
+                    pos = -1;
+                };
+                ctx.drawImage(img, pos, 0);
+                ctx.drawImage(img, pos - w, 0);
+                img.src = 'National_Pa.jpg';
+            }
+            window.setInterval('draw()', (1000/60));         
+        </script>
+    </body>
+</html>

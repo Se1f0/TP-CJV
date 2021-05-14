@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Exo 2</title>
+        <style type="text/css">
+                canvas { border: 1px solid black; }
+        </style>
+    </head>
+    <body>
+        <canvas id="idcanvas" width="300" height="300"></canvas>
+        <script type="text/javascript">          
+            var ctx = document.getElementById('idcanvas').getContext('2d');
+
+            var sun = new Image();
+            var earth = new Image();
+            var moon = new Image();
+            var x = 0; b = 1;
+            function draw() {
+                x = x + b;
+                ctx.clearRect(0, 0, 300, 300);
+                ctx.beginPath();
+                ctx.drawImage(sun,0,0);
+                sun.src = 'sun.png';
+
+                ctx.strokeStyle = "blue";
+                ctx.globalAlpha = 0.4;
+                ctx.arc(150,150,105,0,Math.PI*2);
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+
+                var x1 = 150 + 105 * Math.sin(x * Math.PI / 180);
+                var y1 = 150 + 105 * Math.cos(x * Math.PI / 180);
+                ctx.drawImage(earth,x1-12,y1-12);
+                earth.src = 'earth.png';
+
+                ctx.beginPath();
+                ctx.strokeStyle = "white";
+                ctx.globalAlpha = 0.4;
+                ctx.arc(x1,y1,30,0,Math.PI*2);
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+
+                var x2 = x1 + 30 * Math.sin(10 * x * Math.PI / 180);
+                var y2 = y1 + 30 * Math.cos(10 * x * Math.PI / 180);
+                ctx.drawImage(moon,x2-3.5,y2-3.5);
+                moon.src='moon.png';
+                
+            }
+            window.setInterval('draw()',80);         
+        </script>
+    </body>
+</html>
